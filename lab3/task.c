@@ -36,11 +36,11 @@ int ValInt(int obj)
 }
 
 int InputString() {
-    char b[256], s[256];
+    char b[256], s[256], t[256], r[256];
     char* p;
     int i = 0, j;
     gets(s);
-
+    strcpy(t, s);
     for (p = strtok(s, DEVIDE); p; p = strtok(NULL, DEVIDE)) {
         for (j = strlen(p) - 1; j >= 0; --j, ++i) {
             b[i] = p[j];
@@ -51,13 +51,13 @@ int InputString() {
     }
     b[i] = '\0';
     puts(b);
-
-    for (int q = 0; q < strlen(s); q++) {
-        for (int w = 0; w < strlen(s); w++) {
-            if (s[q] = b[w]) {
-                printf("%s", s[q]);
+    strcpy(r, b);
+    for (int q = 0; q < strlen(t); q++) {
+        for (int w = 0; w < strlen(r); w++) {
+            if (t[q] = r[w]) {
+                printf("%s", t[q]);
                 printf(" - ");
-                printf("%s", s[w]);
+                printf("%s", t[w]);
                 break;
             }
         }
