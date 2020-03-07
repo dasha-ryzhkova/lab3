@@ -42,14 +42,9 @@ int InputString() {
     int i, j, ctr1, q, w = 0, e, r, ctr2;
    
 
-   // printf(" Input  a string : ");
     gets(str1);
     printf("---------------------------------------\n");
-   /*int CountWord = 1;
-    for (int u = 0; u < strlen(str1); u++) {
-        if (str1[u - 1] == ' ' && str1[u] != ' ')
-            CountWord++;
-    }*/
+
 
     j = 0; ctr1 = 0;
     for (i = 0; i <= (strlen(str1)); i++)
@@ -67,12 +62,9 @@ int InputString() {
             j++;
         }
     }
-    /*printf("\n Strings or words after split by space are :\n");
-    for (i = 0; i < ctr1; i++)
-        printf(" %s\n", newString1[i]);*/
+
     //разбиение строки по пробелам
 
-   // strcpy(str2, str1);
 
     for (p = strtok(str1, DEVIDE); p; p = strtok(NULL, DEVIDE)) {
         for (q = strlen(p) - 1; q >= 0; --q, ++w) {
@@ -83,7 +75,7 @@ int InputString() {
 
     }
     str2[w] = '\0';
-    //puts(str2);
+
 
     r = 0; ctr2 = 0;
     for (e = 0; e <= (strlen(str2)); e++)
@@ -101,19 +93,14 @@ int InputString() {
             r++;
         }
     }
-   /* printf("\n Strings or words after split by space are :\n");
-    for (e = 0; e < ctr2; e++)
-        printf(" %s\n", newString2[e]);*/
-    //разбиение строки по пробелам
-    //printf("%d", CountWord);
+
 
     for (i = 0; i < ctr1; i++) {
-        for (e = 0; e < ctr2 - 1; e++) {
+        for (e = i + 1; e < ctr2 - 1; e++) {
 
             if (! strcmp(newString1[i], newString2[e])) {
                 printf("%10s", newString1[i]);
                 printf(" - %s", newString1[e]);
-                //printf("%10s", newString1[e]);
                 printf("\n");
             }
         }
@@ -181,15 +168,9 @@ int main()
     system("cls");
 
     printf("Дано текст. Виділити з тексту всі слова, які є оберненими одне до одного.\n");
-    
     printf("\n");
     printf("\nВведіть рядок:\n");
-    
-    
-    
-
     InputString();
-    
 
     int choise = 0;
     printf("\nДля продовження оберіть 1, для закінчення - 0.\n");
@@ -204,8 +185,4 @@ int main()
         exit(1);
         system("cls");
     }
-
-
-              
-    
 }
