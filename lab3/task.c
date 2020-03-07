@@ -36,35 +36,92 @@ int ValInt(int obj)
 }
 
 int InputString() {
-    char b[256], s[256], t[256], r[256];
+    char str1[100], str2[100], str3[100];
+    char newString1[10][10], newString2[10][10];
     char* p;
-    int i = 0, j;
-    gets(s);
-    strcpy(t, s);
-    for (p = strtok(s, DEVIDE); p; p = strtok(NULL, DEVIDE)) {
-        for (j = strlen(p) - 1; j >= 0; --j, ++i) {
-            b[i] = p[j];
+    int i, j, ctr1, q, w = 0, e, r, ctr2;
+   
+
+   // printf(" Input  a string : ");
+    gets(str1);
+    printf("---------------------------------------\n");
+   /*int CountWord = 1;
+    for (int u = 0; u < strlen(str1); u++) {
+        if (str1[u - 1] == ' ' && str1[u] != ' ')
+            CountWord++;
+    }*/
+
+    j = 0; ctr1 = 0;
+    for (i = 0; i <= (strlen(str1)); i++)
+    {
+        // if space or NULL found, assign NULL into newString[ctr]
+        if (str1[i] == ' ' || str1[i] == '\0')
+        {
+            newString1[ctr1][j] = '\0';
+            ctr1++;  //for next word
+            j = 0;    //for next word, init index to 0
         }
-        b[i] = ' ';
-        ++i;
+        else
+        {
+            newString1[ctr1][j] = str1[i];
+            j++;
+        }
+    }
+    /*printf("\n Strings or words after split by space are :\n");
+    for (i = 0; i < ctr1; i++)
+        printf(" %s\n", newString1[i]);*/
+    //разбиение строки по пробелам
+
+   // strcpy(str2, str1);
+
+    for (p = strtok(str1, DEVIDE); p; p = strtok(NULL, DEVIDE)) {
+        for (q = strlen(p) - 1; q >= 0; --q, ++w) {
+            str2[w] = p[q];
+        }
+        str2[w] = ' ';
+        ++w;
 
     }
-    b[i] = '\0';
-    puts(b);
-    strcpy(r, b);
-    for (int q = 0; q < strlen(t); q++) {
-        for (int w = 0; w < strlen(r); w++) {
-            if (t[q] = r[w]) {
-                printf("%s", t[q]);
-                printf(" - ");
-                printf("%s", t[w]);
-                break;
+    str2[w] = '\0';
+    //puts(str2);
+
+    r = 0; ctr2 = 0;
+    for (e = 0; e <= (strlen(str2)); e++)
+    {
+        // if space or NULL found, assign NULL into newString[ctr]
+        if (str2[e] == ' ' || str2[e] == '\0')
+        {
+            newString2[ctr2][r] = '\0';
+            ctr2++;  //for next word
+            r = 0;    //for next word, init index to 0
+        }
+        else
+        {
+            newString2[ctr2][r] = str2[e];
+            r++;
+        }
+    }
+   /* printf("\n Strings or words after split by space are :\n");
+    for (e = 0; e < ctr2; e++)
+        printf(" %s\n", newString2[e]);*/
+    //разбиение строки по пробелам
+    //printf("%d", CountWord);
+
+    for (i = 0; i < ctr1; i++) {
+        for (e = 0; e < ctr2 - 1; e++) {
+
+            if (! strcmp(newString1[i], newString2[e])) {
+                printf("%10s", newString1[i]);
+                printf(" - %s", newString1[e]);
+                //printf("%10s", newString1[e]);
+                printf("\n");
             }
         }
-
     }
-    
+
 }
+    
+  
 
 void GoToXY(int column, int line)
 {
@@ -134,7 +191,7 @@ int main()
     InputString();
     
 
-    /*int choise = 0;
+    int choise = 0;
     printf("\nДля продовження оберіть 1, для закінчення - 0.\n");
     choise = ValInt(choise);
     while (choise != 0 && choise != 1)
@@ -146,7 +203,7 @@ int main()
     if (choise == 0) {
         exit(1);
         system("cls");
-    }*/
+    }
 
 
               
