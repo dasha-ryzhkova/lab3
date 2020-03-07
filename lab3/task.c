@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <Windows.h>
 #include <string.h>
-#define DELIM " ,.?!;:'-"
+#define DEVIDE " ,.?!;:'-"
 
 
 
@@ -41,7 +41,7 @@ int InputString() {
     int i = 0, j;
     gets(s);
 
-    for (p = strtok(s, DELIM); p; p = strtok(NULL, DELIM)) {
+    for (p = strtok(s, DEVIDE); p; p = strtok(NULL, DEVIDE)) {
         for (j = strlen(p) - 1; j >= 0; --j, ++i) {
             b[i] = p[j];
         }
